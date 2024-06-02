@@ -1,0 +1,15 @@
+{
+  "name": "backend-1",
+  "version": "1.0.0",
+  "description": "PreEntrega1-Gutierrez",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon src/app.js"
+
+  },
+  "author": "Federico G. Gutierrez",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.2"
+  }
+}
