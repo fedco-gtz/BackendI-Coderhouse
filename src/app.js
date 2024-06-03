@@ -10,7 +10,7 @@ app.use('/', productsRouter);
 
 
 app.get('/', (req, res) => {
-  res.send("FEDE")
+  res.send("BIENVENIDO")
 });
 
 // Inicializo el servidor

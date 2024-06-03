@@ -1,5 +1,5 @@
 import { Router } from "express";
-
+import bodyParser from 'body-parser';
 
 const products = [
     { id: 1, nombre: "Producto 1", precio: 10 },
@@ -12,13 +12,58 @@ const products = [
     { id: 8, nombre: "Producto 8", precio: 80 },
     { id: 9, nombre: "Producto 9", precio: 90 },
     { id: 10, nombre: "Producto 10", precio: 100 },
-]
+];
 
 const router = Router();
 
+// Middleware para parsear el cuerpo de las solicitudes POST
+router.use(bodyParser.json());
+
 router.get('/api/products', (req, res) => {
-    res.send("HOLA")
+    res.json({
+        message: "ok",
+        products
+    });
 });
 
+router.get("/api/products/:id", (req, res) => {
+    let { id } = req.params;
+    let productoBuscado = products.find(producto => producto.id === parseInt(id));
+
+    if (productoBuscado) {
+        res.send(productoBuscado);
+    } else {
+        res.send("El producto buscado no existe");
+    }
+});
+
+/*
+// Ruta POST para agregar un nuevo producto
+router.post('/api/products/new', (req, res) => {
+    const { id, title, description, code, status, price, stock, category, thumbnails } = req.body;
+
+    if (!id || !title || !description || !code || !status || !price || !stock || !category || !thumbnails) {
+        return res.status(400).send("Todos los campos son requeridos");
+    }
+
+    const newProduct = {
+        id,
+        title,
+        description,
+        code,
+        status,
+        price,
+        stock,
+        category,
+        thumbnails
+    };
+
+    products.push(newProduct);
+    res.status(201).json({
+        message: "Producto agregado exitosamente",
+        product: newProduct
+    });
+});
+*/
 
 export default router;
