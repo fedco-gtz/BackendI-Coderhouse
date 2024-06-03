@@ -1,34 +1,36 @@
 import { Router } from "express";
-import bodyParser from 'body-parser';
 
 const products = [
-    { id: 1, nombre: "Producto 1", precio: 10 },
-    { id: 2, nombre: "Producto 2", precio: 20 },
-    { id: 3, nombre: "Producto 3", precio: 30 },
-    { id: 4, nombre: "Producto 4", precio: 40 },
-    { id: 5, nombre: "Producto 5", precio: 50 },
-    { id: 6, nombre: "Producto 6", precio: 60 },
-    { id: 7, nombre: "Producto 7", precio: 70 },
-    { id: 8, nombre: "Producto 8", precio: 80 },
-    { id: 9, nombre: "Producto 9", precio: 90 },
-    { id: 10, nombre: "Producto 10", precio: 100 },
+    { id: "00001", nombre: "Producto 1", precio: 10, status: true, thumbnails: ["path/to/image1.jpg", "path/to/image2.jpg"] },
+    { id: "00002", nombre: "Producto 2", precio: 20, status: true, thumbnails: ["path/to/image1.jpg", "path/to/image2.jpg"] },
+    { id: "00003", nombre: "Producto 3", precio: 30, status: true, thumbnails: ["path/to/image1.jpg", "path/to/image2.jpg"] },
+    { id: "00004", nombre: "Producto 4", precio: 40, status: true, thumbnails: ["path/to/image1.jpg", "path/to/image2.jpg"] },
+    { id: "00005", nombre: "Producto 5", precio: 50, status: true, thumbnails: ["path/to/image1.jpg", "path/to/image2.jpg"] },
+    { id: "00006", nombre: "Producto 6", precio: 60, status: true, thumbnails: ["path/to/image1.jpg", "path/to/image2.jpg"] },
+    { id: "00007", nombre: "Producto 7", precio: 70, status: true, thumbnails: ["path/to/image1.jpg", "path/to/image2.jpg"] },
+    { id: "00008", nombre: "Producto 8", precio: 80, status: true, thumbnails: ["path/to/image1.jpg", "path/to/image2.jpg"] },
+    { id: "00009", nombre: "Producto 9", precio: 90, status: true, thumbnails: ["path/to/image1.jpg", "path/to/image2.jpg"] },
+    { id: "00010", nombre: "Producto 10", precio: 100, status: true, thumbnails: ["path/to/image1.jpg", "path/to/image2.jpg"] },
 ];
 
 const router = Router();
 
-// Middleware para parsear el cuerpo de las solicitudes POST
-router.use(bodyParser.json());
+function generateId() {
+    const id = Math.floor(10000 + Math.random() * 90000);
+    return id.toString().padStart(5, '0');
+}
 
+// Metodo GET para visualizar todos los productos o por ID
 router.get('/api/products', (req, res) => {
     res.json({
-        message: "ok",
+        message: "Mostrando todos los productos",
         products
     });
 });
 
 router.get("/api/products/:id", (req, res) => {
     let { id } = req.params;
-    let productoBuscado = products.find(producto => producto.id === parseInt(id));
+    let productoBuscado = products.find(producto => producto.id === id);
 
     if (productoBuscado) {
         res.send(productoBuscado);
@@ -37,17 +39,24 @@ router.get("/api/products/:id", (req, res) => {
     }
 });
 
-/*
-// Ruta POST para agregar un nuevo producto
-router.post('/api/products/new', (req, res) => {
-    const { id, title, description, code, status, price, stock, category, thumbnails } = req.body;
+// Metodo POST para agregar un nuevo producto
+router.post('/api/products', (req, res) => {
+    const { title, description, code, status, price, stock, category, thumbnails } = req.body;
 
-    if (!id || !title || !description || !code || !status || !price || !stock || !category || !thumbnails) {
+    if (!title || !description || !code || status === undefined || !price || !stock || !category || !thumbnails) {
         return res.status(400).send("Todos los campos son requeridos");
     }
 
+    if (typeof status !== 'boolean') {
+        return res.status(400).send("El campo 'status' debe ser un booleano");
+    }
+
+    if (!Array.isArray(thumbnails) || !thumbnails.every(t => typeof t === 'string')) {
+        return res.status(400).send("El campo 'thumbnails' debe ser un array de strings");
+    }
+
     const newProduct = {
-        id,
+        id: generateId(),
         title,
         description,
         code,
@@ -64,6 +73,52 @@ router.post('/api/products/new', (req, res) => {
         product: newProduct
     });
 });
-*/
+
+// Metodo PUT para actualizar un producto por ID
+router.put('/api/products/:pid', (req, res) => {
+    const { pid } = req.params;
+    const updateData = req.body;
+
+    const productIndex = products.findIndex(product => product.id === pid);
+    if (productIndex === -1) {
+        return res.status(404).send("El producto no existe");
+    }
+
+    if (updateData.id) {
+        delete updateData.id;
+    }
+
+    if (updateData.status !== undefined && typeof updateData.status !== 'boolean') {
+        return res.status(400).send("El campo 'status' debe ser un booleano");
+    }
+
+    if (updateData.thumbnails && (!Array.isArray(updateData.thumbnails) || !updateData.thumbnails.every(t => typeof t === 'string'))) {
+        return res.status(400).send("El campo 'thumbnails' debe ser un array de strings");
+    }
+
+    const updatedProduct = { ...products[productIndex], ...updateData };
+    products[productIndex] = updatedProduct;
+
+    res.json({
+        message: "Producto actualizado exitosamente",
+        product: updatedProduct
+    });
+});
+
+// Metodo DELETE para eliminar un producto por ID
+router.delete('/api/products/:pid', (req, res) => {
+    const { pid } = req.params;
+
+    const productIndex = products.findIndex(product => product.id === pid);
+    if (productIndex === -1) {
+        return res.status(404).send("El producto no existe");
+    }
+
+    products.splice(productIndex, 1);
+
+    res.json({
+        message: "Producto eliminado exitosamente"
+    });
+});
 
 export default router;
