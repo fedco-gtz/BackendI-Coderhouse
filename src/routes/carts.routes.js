@@ -18,7 +18,7 @@ router.get('/api/carts', (req, res) => {
         });
     } else {
         res.json({
-            message: "Mostrando todo el carrito de compras",
+            message: "Mostrando el carrito de compras",
             carts
         });
     }
