@@ -20,26 +20,37 @@ function generateId() {
     return id.toString().padStart(5, '0');
 }
 
-// Metodo GET para visualizar todos los productos o por ID
+// Método GET para visualizar todos los productos o por ID
 router.get('/api/products', (req, res) => {
-    res.json({
-        message: "Mostrando todos los productos",
-        products
-    });
-});
+    let { limit } = req.query;
+    limit = parseInt(limit, 10);
 
-router.get("/api/products/:id", (req, res) => {
-    let { id } = req.params;
-    let productoBuscado = products.find(producto => producto.id === id);
-
-    if (productoBuscado) {
-        res.send(productoBuscado);
+    if (!isNaN(limit) && limit > 0) {
+        res.json({
+            message: `Mostrando hasta ${limit} productos`,
+            products: products.slice(0, limit)
+        });
     } else {
-        res.send("El producto buscado no existe");
+        res.json({
+            message: "Mostrando todos los productos",
+            products
+        });
     }
 });
 
-// Metodo POST para agregar un nuevo producto
+router.get('/api/products/:pid', (req, res) => {
+    let { pid } = req.params;
+    let productoBuscado = products.find(producto => producto.id === pid);
+
+    if (productoBuscado) {
+        res.json(productoBuscado);
+    } else {
+        res.status(404).send("El producto buscado no existe");
+    }
+});
+
+
+// Método POST para agregar un nuevo producto
 router.post('/api/products', (req, res) => {
     const { title, description, code, status, price, stock, category, thumbnails } = req.body;
 
@@ -74,7 +85,7 @@ router.post('/api/products', (req, res) => {
     });
 });
 
-// Metodo PUT para actualizar un producto por ID
+// Método PUT para actualizar un producto por ID
 router.put('/api/products/:pid', (req, res) => {
     const { pid } = req.params;
     const updateData = req.body;
@@ -105,7 +116,7 @@ router.put('/api/products/:pid', (req, res) => {
     });
 });
 
-// Metodo DELETE para eliminar un producto por ID
+// Método DELETE para eliminar un producto por ID
 router.delete('/api/products/:pid', (req, res) => {
     const { pid } = req.params;
 
