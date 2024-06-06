@@ -1,9 +1,37 @@
 import { Router } from 'express';
+import fs from 'fs';
+import path from 'path';
 
 const router = Router();
 
+const cartsFilePath = path.resolve('./src/data/cart.json');
+
 let carts = [];
 let cartIdCounter = 1;
+
+const readFile = async (filePath) => {
+  try {
+    const data = await fs.readFile(filePath, 'utf-8');
+    return JSON.parse(data);
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      return []; 
+    } else {
+      throw err;
+    }
+  }
+};
+
+const writeFile = async (filePath, data) => {
+  await fs.writeFile(filePath, JSON.stringify(data, null, 2));
+};
+
+const initializeData = async () => {
+  carts = await readFile(cartsFilePath);
+  cartIdCounter = carts.length > 0 ? Math.max(...carts.map(cart => cart.id)) + 1 : 1;
+};
+
+initializeData();
 
 // Método GET para visualizar el carrito de compras
 router.get('/api/carts', (req, res) => {
@@ -49,7 +77,7 @@ router.get('/api/carts/:cid/product/:pid', (req, res) => {
 });
 
 // Método POST para agregar productos al carrito
-router.post('/api/carts', (req, res) => {
+router.post('/api/carts', async (req, res) => {
   const { products } = req.body;
 
   if (!Array.isArray(products) || !products.every(product => 'name' in product && 'description' in product && 'price' in product && 'stock' in product)) {
@@ -70,12 +98,13 @@ router.post('/api/carts', (req, res) => {
   };
 
   carts.push(newCart);
+  await writeFile(cartsFilePath, carts);
 
   res.status(201).json(newCart);
 });
 
 // Método POST para agregar un producto al carrito por ID de carrito y ID de producto
-router.post('/api/carts/:cid/product/:pid', (req, res) => {
+router.post('/api/carts/:cid/product/:pid', async (req, res) => {
   const cartId = parseInt(req.params.cid);
   const productId = parseInt(req.params.pid);
 
@@ -96,6 +125,7 @@ router.post('/api/carts/:cid/product/:pid', (req, res) => {
     cart.products.push({ id: productId, quantity: 1 });
   }
 
+  await writeFile(cartsFilePath, carts);
   res.status(201).json(cart);
 });
 

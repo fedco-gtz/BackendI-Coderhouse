@@ -1,19 +1,28 @@
 import { Router } from "express";
-
-const products = [
-    { id: "00001", nombre: "Producto 1", precio: 10, status: true, thumbnails: ["path/to/image1.jpg", "path/to/image2.jpg"] },
-    { id: "00002", nombre: "Producto 2", precio: 20, status: true, thumbnails: ["path/to/image1.jpg", "path/to/image2.jpg"] },
-    { id: "00003", nombre: "Producto 3", precio: 30, status: true, thumbnails: ["path/to/image1.jpg", "path/to/image2.jpg"] },
-    { id: "00004", nombre: "Producto 4", precio: 40, status: true, thumbnails: ["path/to/image1.jpg", "path/to/image2.jpg"] },
-    { id: "00005", nombre: "Producto 5", precio: 50, status: true, thumbnails: ["path/to/image1.jpg", "path/to/image2.jpg"] },
-    { id: "00006", nombre: "Producto 6", precio: 60, status: true, thumbnails: ["path/to/image1.jpg", "path/to/image2.jpg"] },
-    { id: "00007", nombre: "Producto 7", precio: 70, status: true, thumbnails: ["path/to/image1.jpg", "path/to/image2.jpg"] },
-    { id: "00008", nombre: "Producto 8", precio: 80, status: true, thumbnails: ["path/to/image1.jpg", "path/to/image2.jpg"] },
-    { id: "00009", nombre: "Producto 9", precio: 90, status: true, thumbnails: ["path/to/image1.jpg", "path/to/image2.jpg"] },
-    { id: "00010", nombre: "Producto 10", precio: 100, status: true, thumbnails: ["path/to/image1.jpg", "path/to/image2.jpg"] },
-];
+import fs from 'fs';
+import path from 'path';
 
 const router = Router();
+const productsFilePath = path.resolve('./src/data/products.json');
+
+function readProductsFromFile() {
+    try {
+        const data = fs.readFileSync(productsFilePath, "utf8");
+        return JSON.parse(data);
+    } catch (error) {
+        console.error("Error reading products file:", error);
+        return [];
+    }
+}
+
+function writeProductsToFile(products) {
+    try {
+        fs.writeFileSync(productsFilePath, JSON.stringify(products, null, 2), "utf8");
+        console.log("Products file updated successfully");
+    } catch (error) {
+        console.error("Error writing products file:", error);
+    }
+}
 
 function generateId() {
     const id = Math.floor(10000 + Math.random() * 90000);
@@ -25,9 +34,11 @@ router.get('/api/products', (req, res) => {
     let { limit } = req.query;
     limit = parseInt(limit, 10);
 
+    const products = readProductsFromFile();
+
     if (!isNaN(limit) && limit > 0) {
         res.json({
-            message: `Mostrando hasta ${limit} productos`,
+            message: `Mostrando ${limit} productos`,
             products: products.slice(0, limit)
         });
     } else {
@@ -40,7 +51,7 @@ router.get('/api/products', (req, res) => {
 
 router.get('/api/products/:pid', (req, res) => {
     let { pid } = req.params;
-    let productoBuscado = products.find(producto => producto.id === pid);
+    let productoBuscado = readProductsFromFile().find(producto => producto.id === pid);
 
     if (productoBuscado) {
         res.json(productoBuscado);
@@ -48,7 +59,6 @@ router.get('/api/products/:pid', (req, res) => {
         res.status(404).send("El producto buscado no existe");
     }
 });
-
 
 // Método POST para agregar un nuevo producto
 router.post('/api/products', (req, res) => {
@@ -78,7 +88,10 @@ router.post('/api/products', (req, res) => {
         thumbnails
     };
 
+    const products = readProductsFromFile();
     products.push(newProduct);
+    writeProductsToFile(products);
+
     res.status(201).json({
         message: "Producto agregado exitosamente",
         product: newProduct
@@ -90,6 +103,7 @@ router.put('/api/products/:pid', (req, res) => {
     const { pid } = req.params;
     const updateData = req.body;
 
+    const products = readProductsFromFile();
     const productIndex = products.findIndex(product => product.id === pid);
     if (productIndex === -1) {
         return res.status(404).send("El producto no existe");
@@ -110,6 +124,8 @@ router.put('/api/products/:pid', (req, res) => {
     const updatedProduct = { ...products[productIndex], ...updateData };
     products[productIndex] = updatedProduct;
 
+    writeProductsToFile(products);
+
     res.json({
         message: "Producto actualizado exitosamente",
         product: updatedProduct
@@ -120,12 +136,15 @@ router.put('/api/products/:pid', (req, res) => {
 router.delete('/api/products/:pid', (req, res) => {
     const { pid } = req.params;
 
+    const products = readProductsFromFile();
     const productIndex = products.findIndex(product => product.id === pid);
     if (productIndex === -1) {
         return res.status(404).send("El producto no existe");
     }
 
     products.splice(productIndex, 1);
+
+    writeProductsToFile(products);
 
     res.json({
         message: "Producto eliminado exitosamente"

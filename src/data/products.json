@@ -1,0 +1,156 @@
+[
+  {
+    "id": "82821",
+    "title": "Camisa Casual",
+    "description": "Camisa de algodón de manga larga",
+    "code": "R001",
+    "status": true,
+    "price": 25000,
+    "stock": 50,
+    "category": "Ropa",
+    "thumbnails": [
+      "camisa_casual1.jpg",
+      "camisa_casual2.jpg"
+    ]
+  },
+  {
+    "id": "93371",
+    "title": "Pantalones Chinos",
+    "description": "Pantalones chinos ajustados",
+    "code": "R002",
+    "status": true,
+    "price": 40000,
+    "stock": 30,
+    "category": "Ropa",
+    "thumbnails": [
+      "pantalones_chinos1.jpg",
+      "pantalones_chinos2.jpg"
+    ]
+  },
+  {
+    "id": "84727",
+    "title": "Campera de Cuero",
+    "description": "Campera de cuero genuino",
+    "code": "R003",
+    "status": true,
+    "price": 150000,
+    "stock": 15,
+    "category": "Ropa",
+    "thumbnails": [
+      "campera_cuero1.jpg",
+      "campera_cuero2.jpg"
+    ]
+  },
+  {
+    "id": "60605",
+    "title": "Remera con Capucha",
+    "description": "Remera con capucha y bolsillo delantero",
+    "code": "R004",
+    "status": true,
+    "price": 35000,
+    "stock": 40,
+    "category": "Ropa",
+    "thumbnails": [
+      "remera1.jpg",
+      "remera2.jpg"
+    ]
+  },
+  {
+    "id": "49520",
+    "title": "Camiseta Básica",
+    "description": "Camiseta básica de algodón",
+    "code": "R005",
+    "status": true,
+    "price": 15000,
+    "stock": 100,
+    "category": "Ropa",
+    "thumbnails": [
+      "camiseta_basica1.jpg",
+      "camiseta_basica2.jpg"
+    ]
+  },
+  {
+    "id": "39315",
+    "title": "Jeans Ajustados",
+    "description": "Jeans ajustados de mezclilla",
+    "code": "R006",
+    "status": true,
+    "price": 45000,
+    "stock": 25,
+    "category": "Ropa",
+    "thumbnails": [
+      "jeans1.jpg",
+      "jeans2.jpg"
+    ]
+  },
+  {
+    "id": "60998",
+    "title": "Blazer Formal",
+    "description": "Blazer formal de lana",
+    "code": "R007",
+    "status": true,
+    "price": 120000,
+    "stock": 10,
+    "category": "Ropa",
+    "thumbnails": [
+      "blazer1.jpg",
+      "blazer2.jpg"
+    ]
+  },
+  {
+    "id": "90432",
+    "title": "Polo Deportivo",
+    "description": "Polo deportivo de secado rápido",
+    "code": "R008",
+    "status": true,
+    "price": 30000,
+    "stock": 60,
+    "category": "Ropa",
+    "thumbnails": [
+      "polo1.jpg",
+      "polo2.jpg"
+    ]
+  },
+  {
+    "id": "22198",
+    "title": "Abrigo de Lana",
+    "description": "Abrigo largo de lana",
+    "code": "R009",
+    "status": true,
+    "price": 200000,
+    "stock": 5,
+    "category": "Ropa",
+    "thumbnails": [
+      "abrigo1.jpg",
+      "abrigo2.jpg"
+    ]
+  },
+  {
+    "id": "16389",
+    "title": "Traje de Baño",
+    "description": "Traje de baño de secado rápido",
+    "code": "R011",
+    "status": true,
+    "price": 25000,
+    "stock": 40,
+    "category": "Ropa",
+    "thumbnails": [
+      "banador1.jpg",
+      "banador2.jpg"
+    ]
+  },
+  {
+    "id": "99295",
+    "title": "Reloj Deportivo",
+    "description": "Reloj deportivo resistente al agua",
+    "code": "R012",
+    "status": true,
+    "price": 80000,
+    "stock": 20,
+    "category": "Accesorios",
+    "thumbnails": [
+      "reloj1.jpg",
+      "reloj2.jpg"
+    ]
+  }
+]
