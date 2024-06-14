@@ -8,6 +8,7 @@ const port = 8080;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
+app.use(express.static('public'));
 
 
 app.use('/', productsRouter);
@@ -15,7 +16,7 @@ app.use('/', cartsRouter);
 
 
 app.get('/', (req, res) => {
-  res.send("¡BIENVENIDO! <br> PreEntrega1-Gutierrez <br> Backend I - Comisión 69990")
+  res.sendFile(__dirname + '/public/index.html');
 });
 
 
