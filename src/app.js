@@ -11,8 +11,8 @@ const port = 8080;
 
 // Middleware //
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }))
-app.use(express.static('../public'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
 // Express Handlebars //
 app.engine('handlebars', engine());
@@ -24,10 +24,20 @@ app.use('/', productsRouter);
 app.use('/', cartsRouter);
 app.use('/', viewsRouter);
 
-app.listen(port, () => {
+// Servidor //
+const httpServer = app.listen(port, () => {
   displayRoutes(app)
   console.log(`Servidor escuchando en http://localhost:${port}`);
 });
 
+import ProductManager from './utils/productManager.js';
+const productManager = new ProductManager('./src/data/products.json');
+const io = new Server(httpServer); 
 
+io.on('connection', async (socket) => {
+  console.log("Un cliente se conecto"); 
+
+  //Enviamos el array de productos: 
+  socket.emit("products", await productManager.getProducts());
+})
 

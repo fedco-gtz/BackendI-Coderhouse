@@ -126,31 +126,17 @@
     ]
   },
   {
-    "id": "16389",
+    "id": "14078",
     "title": "Traje de Baño",
     "description": "Traje de baño de secado rápido",
-    "code": "R011",
-    "status": true,
     "price": 25000,
+    "code": "R011",
     "stock": 40,
     "category": "Ropa",
+    "status": true,
     "thumbnails": [
       "banador1.jpg",
       "banador2.jpg"
-    ]
-  },
-  {
-    "id": "99295",
-    "title": "Reloj Deportivo",
-    "description": "Reloj deportivo resistente al agua",
-    "code": "R012",
-    "status": true,
-    "price": 80000,
-    "stock": 20,
-    "category": "Accesorios",
-    "thumbnails": [
-      "reloj1.jpg",
-      "reloj2.jpg"
     ]
   }
 ]

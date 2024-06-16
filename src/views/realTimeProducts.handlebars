@@ -1,13 +1,3 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VerdeVital</title>
-    <link rel="stylesheet" href="../../public/css/styles.css">
-    <link rel="icon" href="../../public/images/pages/icon.png">
-</head>
-
 <body>
     <header>
         <div class="nav-container">
@@ -25,42 +15,24 @@
         </div>
     </header>
     <div class="text">
-        <p>ENVIOS GRATIS: 🛵 CABA $20.000 - 📦 TODO EL PAIS $50.000 Y HASTA 3 CUOTAS S/ INTERÉS 💳 - 10% PAGO EFECTIVO 💸</p>
+        <p>ENVIOS GRATIS: 🛵 CABA $20.000 - 📦 TODO EL PAIS $50.000 Y HASTA 3 CUOTAS S/ INTERÉS 💳 - 10% PAGO EFECTIVO
+            💸</p>
     </div>
 
     <main>
         <section class="products">
-            <h2>Productos Destacados</h2>
-            <div class="product-list">
-                <div class="product-item">
-                    <img src="img/product1.jpg" alt="Producto 1">
-                    <h3>Producto 1</h3>
-                    <p>Descripción del producto 1</p>
-                    <p>Precio: $10.00</p>
-                    <button>Añadir al Carrito</button>
-                </div>
-            </div>
-        </section>
-
-        <section class="cart">
-            <h2>Carrito de Compras</h2>
-            <div class="cart-list">
-                <div class="cart-item">
-                    <h3>Producto 1</h3>
-                    <p>Precio: $10.00</p>
-                    <p>Cantidad: 1</p>
-                    <button>Eliminar</button>
-                </div>
-            </div>
-            <div class="cart-total">
-                <p>Total: $10.00</p>
-                <button>Proceder al Pago</button>
-            </div>
+            <h2 class="title">PRODUCTOS DISPONIBLES</h2>
+            <div class="container-products" id="contenedorProductos"></div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 VerdeVital. Todos los derechos reservados.</p>
+        <p>&copy; 2024 <span style="color: rgb(193, 255, 114); font-weight: bold;">Verde</span><span
+                style="color: rgb(12, 192, 223); font-weight: bold;">Vital</span>. Todos los derechos reservados.</p>
     </footer>
 </body>
+
+<script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
+<script src="js/main.js"></script>
+
 </html>
