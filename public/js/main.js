@@ -17,7 +17,7 @@ const renderProducts = (data) => {
                             <h2 class="product-description"> ${item.description} </h2>
                             <h2 class="product-stock"> Stock disponible: ${item.stock} | Categoria: ${item.category} </h2>
                             <p class="product-price"> Precio: $${item.price} </p>
-                            <button class="trash"> Eliminar </button>
+                            <button class="trash"> ELIMINAR </button>
                         `
         containerProducts.appendChild(card); 
         card.querySelector("button").addEventListener("click", () => {

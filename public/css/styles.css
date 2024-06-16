@@ -191,3 +191,59 @@ footer {
     font-weight: bold;
     color: rgb(255, 255, 255);
 }
+
+/* General form styling */
+#formAddProduct {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styling for form elements */
+#formAddProduct input[type="text"],
+#formAddProduct input[type="number"],
+#formAddProduct select,
+#formAddProduct button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+#formAddProduct input[type="text"]:focus,
+#formAddProduct input[type="number"]:focus,
+#formAddProduct select:focus {
+    border-color: #007bff;
+}
+
+/* Button styling */
+#formAddProduct button {
+    grid-column: span 4; /* Button spans across all columns */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#formAddProduct button:hover {
+    background-color: #0056b3;
+}
+
+/* Placeholder text styling */
+#formAddProduct input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
