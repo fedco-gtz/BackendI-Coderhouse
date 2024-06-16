@@ -1,33 +1,56 @@
 const socket = io(); 
 
 socket.on("products", (data) => {
-    renderProductos(data);
+    renderProducts(data);
 })
 
-//Función para renderizar nuestros productos: 
-
-const renderProductos = (data) => {
-    const contenedorProductos = document.getElementById("contenedorProductos");
-    contenedorProductos.innerHTML = "";
+const renderProducts = (data) => {
+    const containerProducts = document.getElementById("containerProducts");
+    containerProducts.innerHTML = " ";
 
     data.forEach(item => {
         const card = document.createElement("div"); 
         card.classList.add("product-card")
         
-        card.innerHTML = `  <h4 class="product-id"> ID: ${item.id} </h4>
+        card.innerHTML = `  <h4 class="product-id"> ID: ${item.id} | Código: ${item.code}</h4>
                             <h1 class="product-title"> ${item.title} </h1>
                             <h2 class="product-description"> ${item.description} </h2>
-                            <p class="product-price> ${item.price} </p>
-                            <button> Eliminar </button>
+                            <h2 class="product-stock"> Stock disponible: ${item.stock} | Categoria: ${item.category} </h2>
+                            <p class="product-price"> Precio: $${item.price} </p>
+                            <button class="trash"> Eliminar </button>
                         `
-        contenedorProductos.appendChild(card); 
+        containerProducts.appendChild(card); 
         card.querySelector("button").addEventListener("click", () => {
-            eliminarProducto(item.id); 
+            removeProduct(item.id); 
         })
     })
 }
 
-const eliminarProducto = (id) => {
-    socket.emit("eliminarProducto", id); 
+const removeProduct = (id) => {
+    socket.emit("removeProduct", id); 
 }
 
+document.getElementById("btnEnviar").addEventListener("click", () => {
+    addProduct();
+    cleanForm();
+})
+
+const addProduct = () => {
+    const producto = {
+        title: document.getElementById("title").value,
+        description: document.getElementById("description").value,
+        price: document.getElementById("price").value,
+        img: document.getElementById("img").value,
+        code: document.getElementById("code").value,
+        stock: document.getElementById("stock").value,
+        category: document.getElementById("category").value,
+        status: document.getElementById("status").value === "true",
+    }
+
+    socket.emit("addProduct", producto);
+}
+
+function cleanForm() {
+    const form = document.getElementById("formAddProduct");
+    form.reset();
+}

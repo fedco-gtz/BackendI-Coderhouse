@@ -108,7 +108,7 @@ footer {
     padding-bottom: 20px;
 }
 
-#contenedorProductos {
+#containerProducts {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -118,7 +118,6 @@ footer {
     flex: 0 0 calc(33.333% - 20px);
     box-sizing: border-box;
     padding: 20px;
-    background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
@@ -131,16 +130,64 @@ footer {
     font-size: 18px;
     color: #242424;
     font-weight: bold;
+    padding: 10px;
 }
 
 .product-card .product-title {
     font-weight: bold;
     font-size: 1.5em;
     text-align: center;
+    padding: 5px;
 }
 
 .product-card .product-description {
-    font-weight: bold;
-    font-size: 1.5em;
+    font-size: 0.9em;
     text-align: center;
+    padding-top: 2px;
+    padding-bottom: 10px;
+}
+
+.product-card .product-stock {
+    font-size: 1em;
+    text-align: center;
+    padding: 5px;
+}
+
+.product-card .product-price {
+    font-size: 2.2em;
+    text-align: center;
+    padding: 5px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.product-card .trash {
+    background-color: #fe504f66;
+    border: 3px solid rgba(0, 31, 85, .2);
+    width: 120px;
+    height: 35px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    margin-left: auto;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.product-card .trash:hover {
+    background-color: rgb(239, 77, 75);
+    border: 3px solid rgba(0, 31, 85, 0.2);
+    width: 120px;
+    height: 35px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
 }

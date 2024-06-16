@@ -21,8 +21,27 @@
 
     <main>
         <section class="products">
+            <h2 class="title">AGREGAR PRODUCTOS</h2>
+            <form id="formAddProduct">
+                <input type="text" id="title" placeholder="Titulo">
+                <input type="text" id="description" placeholder="Descripcion">
+                <input type="number" id="price" placeholder="Precio">
+                <input type="text" id="img" value="Sin Imagen">
+                <input type="text" id="code" placeholder="Codigo">
+                <input type="number" id="stock" placeholder="Stock">
+                <input type="text" id="category" placeholder="Categoria">
+                <select id="status">
+                    <option value="true"> Activo </option>
+                    <option value="false"> Inactivo </option>
+                </select>
+                <button type="button" id="btnEnviar"> Enviar </button>
+            </form>
+
+        </section>
+
+        <section class="products">
             <h2 class="title">PRODUCTOS DISPONIBLES</h2>
-            <div class="container-products" id="contenedorProductos"></div>
+            <div class="container-products" id="containerProducts"></div>
         </section>
     </main>
 

@@ -1,142 +1,173 @@
 [
   {
-    "id": "82821",
-    "title": "Camisa Casual",
-    "description": "Camisa de algodón de manga larga",
-    "code": "R001",
+    "id": "20230",
+    "title": "JABONERA DE BAMBÚ NATURAL",
+    "description": "Jabonera de Bambú Moso 🐼 <br> - Medidas: 17cm largo x 2cm alto x 9,5 cm ancho",
+    "price": "9900",
+    "code": "B01",
+    "stock": "34",
+    "category": "Baño",
     "status": true,
-    "price": 25000,
-    "stock": 50,
-    "category": "Ropa",
-    "thumbnails": [
-      "camisa_casual1.jpg",
-      "camisa_casual2.jpg"
-    ]
+    "thumbnails": []
   },
   {
-    "id": "93371",
-    "title": "Pantalones Chinos",
-    "description": "Pantalones chinos ajustados",
-    "code": "R002",
+    "id": "20101",
+    "title": "JABONERA DE MADERA NATURAL",
+    "description": "Jabonera hecha artesanalmente en madera 🪵 <br> - Medidas: 16,5cm largo x 9,5cm ancho",
+    "price": "5450",
+    "code": "B02",
+    "stock": "23",
+    "category": "Baño",
     "status": true,
-    "price": 40000,
-    "stock": 30,
-    "category": "Ropa",
-    "thumbnails": [
-      "pantalones_chinos1.jpg",
-      "pantalones_chinos2.jpg"
-    ]
+    "thumbnails": []
   },
   {
-    "id": "84727",
-    "title": "Campera de Cuero",
-    "description": "Campera de cuero genuino",
-    "code": "R003",
+    "id": "10543",
+    "title": "PEINE DE BAMBÚ PARA RULOS",
+    "description": "Su ergonomía evita la caída del pelo, ayuda a desenredarlo y conserva la forma natural del rulo",
+    "price": "9590",
+    "code": "B03",
+    "stock": "18",
+    "category": "Baño",
     "status": true,
-    "price": 150000,
-    "stock": 15,
-    "category": "Ropa",
-    "thumbnails": [
-      "campera_cuero1.jpg",
-      "campera_cuero2.jpg"
-    ]
+    "thumbnails": []
   },
   {
-    "id": "60605",
-    "title": "Remera con Capucha",
-    "description": "Remera con capucha y bolsillo delantero",
-    "code": "R004",
+    "id": "74117",
+    "title": "CEPILLO DE DIENTES DE BAMBÚ",
+    "description": "- Misma vida útil y experiencia de lavado que un cepillo de dientes convencional. <br> - Cerdas de Nylon libres de BPA ⚛️ y reciclables♻️ <br> - Colores disponinles 🟢 🟡 🔵 🟣",
+    "price": "2760",
+    "code": "B04",
+    "stock": "16",
+    "category": "Baño",
     "status": true,
-    "price": 35000,
-    "stock": 40,
-    "category": "Ropa",
-    "thumbnails": [
-      "remera1.jpg",
-      "remera2.jpg"
-    ]
+    "thumbnails": []
   },
   {
-    "id": "49520",
-    "title": "Camiseta Básica",
-    "description": "Camiseta básica de algodón",
-    "code": "R005",
+    "id": "93174",
+    "title": "ESTUCHE DE VIAJE PORTA CEPILLO",
+    "description": "- 100% Bambú Moso 🐼 <br> - Sin plástico ♻️ <br> - Biodegradable 🌱 <br> - Ideal para viajar 🌎",
+    "price": "6785",
+    "code": "B05",
+    "stock": "23",
+    "category": "Baño",
     "status": true,
-    "price": 15000,
-    "stock": 100,
-    "category": "Ropa",
-    "thumbnails": [
-      "camiseta_basica1.jpg",
-      "camiseta_basica2.jpg"
-    ]
+    "thumbnails": []
   },
   {
-    "id": "39315",
-    "title": "Jeans Ajustados",
-    "description": "Jeans ajustados de mezclilla",
-    "code": "R006",
+    "id": "17127",
+    "title": "HILO DENTAL BIODEGRADABLE",
+    "description": "- Hilo Dental + Envase Vidrio  Biodegradable 🐇 <br> - Encerado con cera de candelilla  Sabor a menta 🌿  30 mts de largo 📏 <br> - Compostable en el hogar 🌱",
+    "price": "5865",
+    "code": "B06",
+    "stock": "62",
+    "category": "Baño",
     "status": true,
-    "price": 45000,
-    "stock": 25,
-    "category": "Ropa",
-    "thumbnails": [
-      "jeans1.jpg",
-      "jeans2.jpg"
-    ]
+    "thumbnails": []
   },
   {
-    "id": "60998",
-    "title": "Blazer Formal",
-    "description": "Blazer formal de lana",
-    "code": "R007",
+    "id": "95771",
+    "title": "SHAMPOO SOLIDO NATURAL (CABELLO SECO)",
+    "description": "- Duración aproximada 90 lavados 💆‍♀️💆‍♂️ <br> - Aprobado por ANMAT ⚕️ <br> - Libre de Parabenos y Silicona <br> - No testesado en animales 🐇 <br> - PESO 110 gr",
+    "price": "13190",
+    "code": "B07",
+    "stock": "28",
+    "category": "B07",
     "status": true,
-    "price": 120000,
-    "stock": 10,
-    "category": "Ropa",
-    "thumbnails": [
-      "blazer1.jpg",
-      "blazer2.jpg"
-    ]
+    "thumbnails": []
   },
   {
-    "id": "90432",
-    "title": "Polo Deportivo",
-    "description": "Polo deportivo de secado rápido",
-    "code": "R008",
+    "id": "86129",
+    "title": "SHAMPOO SÓLIDO NATURAL (CABELLO MIXTO)",
+    "description": "- Duración aproximada 50 lavados 💆‍♀️💆‍♂️ <br> - Aprobado por ANMAT ⚕️ <br> - Libre de Parabenos y Silicona <br> - No testesado en animales 🐇 <br> - PESO 50 gr",
+    "price": "6690",
+    "code": "B08",
+    "stock": "31",
+    "category": "Baño",
     "status": true,
-    "price": 30000,
-    "stock": 60,
-    "category": "Ropa",
-    "thumbnails": [
-      "polo1.jpg",
-      "polo2.jpg"
-    ]
+    "thumbnails": []
   },
   {
-    "id": "22198",
-    "title": "Abrigo de Lana",
-    "description": "Abrigo largo de lana",
-    "code": "R009",
+    "id": "18718",
+    "title": "SHAMPOO SÓLIDO NATURAL (CABELLO GRASO)",
+    "description": "- Duración aproximada 50 lavados 💆‍♀️💆‍♂️ <br> - Aprobado por ANMAT ⚕️ <br> - Libre de Parabenos y Silicona <br> - No testesado en animales 🐇 <br> - PESO 35 gr",
+    "price": "6690",
+    "code": "B09",
+    "stock": "53",
+    "category": "Baño",
     "status": true,
-    "price": 200000,
-    "stock": 5,
-    "category": "Ropa",
-    "thumbnails": [
-      "abrigo1.jpg",
-      "abrigo2.jpg"
-    ]
+    "thumbnails": []
   },
   {
-    "id": "14078",
-    "title": "Traje de Baño",
-    "description": "Traje de baño de secado rápido",
-    "price": 25000,
-    "code": "R011",
-    "stock": 40,
-    "category": "Ropa",
+    "id": "16387",
+    "title": "SERVILLETAS KRAFT ECOLÓGICAS 23X23CM X 20 UNIDADES",
+    "description": "Servilletas Kraft Ecológicas NATURAL PACK ®️, impresas con tintas al agua y procesos de producción que no dañan el medioambiente.   🍃 100% eco friendly  ♻️ Sustentable  Pack por 20 unidades.  Medidas: 23X23 cm.  Aprobado por ANMAT.",
+    "price": "2310",
+    "img": "Sin Imagen",
+    "code": "C01",
+    "stock": "11",
+    "category": "Cocina",
     "status": true,
-    "thumbnails": [
-      "banador1.jpg",
-      "banador2.jpg"
-    ]
+    "thumbnails": []
+  },
+  {
+    "id": "47750",
+    "title": "CÁPSULAS DE CAFÉ REUTILIZABLES – CAFETERA NESPRESSO X 4",
+    "description": "Cápsulas reutilizables compatibles con sistema Nespresso para ser utilizadas con café molido ☕️ , soluble, té 🍵 o yerba mate 🧉.  Vienen en un práctico y elegante estuche para guardar las cápsulas luego de su uso sobre la mesada o en la alacena.  Contiene 4 cápsulas en vívidos colores para personalizar las cápsulas a gusto y una cuchara 🥄 con la medida justa para cargar adecuadamente la cápsula.  Cada cápsula se puede reutilizar un mínimo de 100 veces  ♻️.  Con cada cápsula podés realizar un pocillo express(30ml)  Para un largo o «lungo»(110ml) utiliza dos cápsulas.  Compatibilidad con todos los modelos de:  Nespresso* (Para maquinas de 2010 en adelante)",
+    "price": "13000",
+    "img": "Sin Imagen",
+    "code": "C02",
+    "stock": "75",
+    "category": "Cocina",
+    "status": true,
+    "thumbnails": []
+  },
+  {
+    "id": "96538",
+    "title": "TAPA DE SILICONA PARA BOTELLAS BEER SAVERS",
+    "description": "Tapitas ideales para conservas bebidas ya abiertas, ayudando a conservar el gas y la frescura.  Son duraderas, moldeables, reutilizables y aptas para lavavajillas.  Silicona apta para alimentos.  Vienen en varios colores, ideales para identificar tu botella y tambien para regalar!  Rosa pastel, Lila, Rojo, Verde Manzana, Verde Agua, Celeste",
+    "price": "1000",
+    "img": "Sin Imagen",
+    "code": "C03",
+    "stock": "4",
+    "category": "Cocina",
+    "status": true,
+    "thumbnails": []
+  },
+  {
+    "id": "90472",
+    "title": "COMBO MATE + BOMBILLA ACERO INOXIDABLE 236 ML JOURNEY",
+    "description": "🧉 Combo Mate de Acero Inoxidable doble capa Journey Matt y bombilla de acero inoxidable 304.  🟢 Color Verde  🍃 Libre De BPA  ✔ Aprobado Por I.N.A.L.  🔥 Agua Caliente por 30´",
+    "price": "23200",
+    "img": "Sin Imagen",
+    "code": "C04",
+    "stock": "45",
+    "category": "Cocina",
+    "status": true,
+    "thumbnails": []
+  },
+  {
+    "id": "51493",
+    "title": "LIMPIA PISO ECOLÓGICO 100% BIODEGRADABLE – BOTELLA 1 LT.",
+    "description": " ",
+    "price": "4172",
+    "img": "Sin Imagen",
+    "code": "C05",
+    "stock": "17",
+    "category": "Hogar",
+    "status": true,
+    "thumbnails": []
+  },
+  {
+    "id": "58192",
+    "title": "LIMPIA VIDRIOS ECOLÓGICO 100% BIODEGRADABLE DE VERBENA – BIDÓN 5 LTS.",
+    "description": " ",
+    "price": "28409",
+    "img": "Sin Imagen",
+    "code": "C06",
+    "stock": "29",
+    "category": "Cocina",
+    "status": true,
+    "thumbnails": []
   }
 ]

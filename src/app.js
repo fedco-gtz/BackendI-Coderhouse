@@ -34,10 +34,20 @@ import ProductManager from './utils/productManager.js';
 const productManager = new ProductManager('./src/data/products.json');
 const io = new Server(httpServer); 
 
-io.on('connection', async (socket) => {
-  console.log("Un cliente se conecto"); 
+io.on("connection", async (socket) => {
 
-  //Enviamos el array de productos: 
   socket.emit("products", await productManager.getProducts());
+
+  socket.on("removeProduct", async (id) => {
+      await productManager.deleteProduct(id);
+
+      io.sockets.emit("products", await productManager.getProducts());
+  })
+
+  socket.on("addProduct", async (producto) => {
+      await productManager.addProduct(producto);  
+
+      io.sockets.emit("products", await productManager.getProducts());
+  })
 })
 

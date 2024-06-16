@@ -27,7 +27,7 @@ class ProductManager {
 
             const newProduct = {
                 id: newId,
-                title,
+                title: title.toUpperCase(),
                 description,
                 price,
                 img,
