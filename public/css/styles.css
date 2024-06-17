@@ -250,3 +250,33 @@ footer {
     color: #aaa;
     font-style: italic;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px; 
+    table-layout: fixed;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #333;
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+#product-count {
+    background-color: #007bff; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    padding: 5px 10px; /* Espaciado interno */
+    border-radius: 5px; /* Borde redondeado */
+    margin-left: 10px; /* Margen a la izquierda para separación del texto */
+    font-weight: bold; /* Negrita */
+}
