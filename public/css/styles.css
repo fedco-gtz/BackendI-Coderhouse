@@ -273,10 +273,10 @@ td {
 }
 
 #product-count {
-    background-color: #007bff; /* Color de fondo */
-    color: #fff; /* Color del texto */
-    padding: 5px 10px; /* Espaciado interno */
-    border-radius: 5px; /* Borde redondeado */
-    margin-left: 10px; /* Margen a la izquierda para separación del texto */
-    font-weight: bold; /* Negrita */
+    background-color: #007bff; 
+    color: #fff; 
+    padding: 5px 10px; 
+    border-radius: 5px; 
+    margin-left: 10px; 
+    font-weight: bold; 
 }
