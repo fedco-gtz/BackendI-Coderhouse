@@ -3,7 +3,7 @@ const router = express.Router();
 import ProductManager from "../dao/db/productManagerDb.js";
 const productManager = new ProductManager();
 
-// Método GET para visualizar todos los productos o por ID
+// Método GET para visualizar todos los productos
 router.get("/api/products", async (req, res) => {
     try {
         const limit = req.query.limit;
@@ -18,7 +18,7 @@ router.get("/api/products", async (req, res) => {
     }
 });
 
-
+// Método GET para visualizar los productos por ID
 router.get("/api/products/:pid", async (req, res) => {
     const id = req.params.pid;
     try {

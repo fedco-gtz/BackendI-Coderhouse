@@ -108,6 +108,13 @@ footer {
     padding-bottom: 20px;
 }
 
+.products .main-title {
+    text-align: center;
+    padding-bottom: 20px;
+    font-size: 34px;
+    font-weight: bold
+}
+
 #containerProducts {
     display: flex;
     flex-wrap: wrap;
