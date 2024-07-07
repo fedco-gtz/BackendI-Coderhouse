@@ -1,20 +1,20 @@
-import CartModel from "../fs/data/cart.model.js";
+import cartModel from "../models/cart.model.js";
 
 class CartManager {
     async createCart() {
         try {
-            const newCart = new CartModel({ products: [] });
+            const newCart = new cartModel({ products: [] });
             await newCart.save();
             return newCart;
         } catch (error) {
-            console.log("Error al crear carrito", error);
+            console.error("Error al crear carrito", error);
             throw error;
         }
     }
 
     async getCartById(cartId) {
         try {
-            const cart = await CartModel.findById(cartId);
+            const cart = await cartModel.findById(cartId);
             if (!cart) {
                 throw new Error(`No existe un carrito con el id ${cartId}`);
             }
@@ -28,7 +28,11 @@ class CartManager {
     async addProductToCart(cartId, productId, quantity = 1) {
         try {
             const cart = await this.getCartById(cartId);
-            const existsProduct = cart.products.find(item => item.product.toString() === productId)
+            if (!cart) {
+                throw new Error(`No existe un carrito con el id ${cartId}`);
+            }
+            
+            const existsProduct = cart.products.find(item => item.product.toString() === productId);
             if (existsProduct) {
                 existsProduct.quantity += quantity;
             } else {

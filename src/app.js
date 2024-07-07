@@ -33,6 +33,8 @@ const httpServer = app.listen(port, () => {
 
 import ProductManager from './dao/db/productManagerDb.js';
 const productManager = new ProductManager('./dao/fs/data/products.json');
+import CartManager from './dao/db/cartManagerDb.js';
+const cartManager = new CartManager('./dao/fs/data/cart.json');
 const io = new Server(httpServer); 
 
 io.on("connection", async (socket) => {
@@ -52,4 +54,3 @@ io.on("connection", async (socket) => {
       io.sockets.emit("products", await productManager.getProducts());
   })
 })
-
