@@ -5,6 +5,7 @@ import { Server } from 'socket.io';
 import productsRouter from './routes/products.routes.js';
 import cartsRouter from './routes/carts.routes.js';
 import viewsRouter from './routes/view.routes.js';
+import "./database.js"
 
 const app = express();
 const port = 8080;
@@ -30,8 +31,8 @@ const httpServer = app.listen(port, () => {
   console.log(`Servidor escuchando en http://localhost:${port}`);
 });
 
-import ProductManager from './utils/productManager.js';
-const productManager = new ProductManager('./src/data/products.json');
+import ProductManager from './dao/db/productManagerDb.js';
+const productManager = new ProductManager('./dao/fs/data/products.json');
 const io = new Server(httpServer); 
 
 io.on("connection", async (socket) => {

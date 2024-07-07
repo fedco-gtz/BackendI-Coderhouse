@@ -131,6 +131,8 @@ footer {
     color: #242424;
     font-weight: bold;
     padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
 }
 
 .product-card .product-title {
