@@ -1,29 +1,36 @@
-<h1>Lista de Productos</h1>
+<body>
+    <main>
+        <section class="products">
+            <h1 class="title">PRODUCTOS</h1>
+            {{#each payload}}
+            <div class="container-products">
+                <div class="product-card">
+                    <h4 class="product-id">Código: {{code}}</h4>
+                    <h4 class="product-title">Nombre: {{this.title}}</h4>
+                    <p class="product-stock">Categoria: {{this.category}}</p>
+                    <p class="product-description">Descripción: {{this.description}}</p>
+                    <p class="product-price">Precio: {{this.price}}</p>
+                    <a href="/products/{{this._id}}" class="btn btn-primary">Ver Detalles</a>
 
-{{#each payload}}
-<div class="product">
-    <h3>{{this.title}}</h3>
-    <p>Precio: {{this.price}}</p>
-    <p>Categoría: {{this.category}}</p>
-    <p>{{this.description}}</p>
+                    <form action="/add-to-cart/{{this._id}}" method="POST">
+                        <button type="submit" class="btn btn-success">Agregar al Carrito</button>
+                    </form>
+                </div>
+            </div>
+            {{/each}}
 
-    <a href="/products/{{this._id}}" class="btn btn-primary">Ver Detalles</a>
+            <div>
+                {{#if hasPrevPage}}
+                <a href="{{prevLink}}" class="btn btn-secondary">Página Anterior</a>
+                {{/if}}
 
-    <form action="/add-to-cart/{{this._id}}" method="POST">
-        <button type="submit" class="btn btn-success">Agregar al Carrito</button>
-    </form>
-</div>
-{{/each}}
-
-<div>
-    {{#if hasPrevPage}}
-    <a href="{{prevLink}}" class="btn btn-secondary">Página Anterior</a>
-    {{/if}}
-
-    {{#if hasNextPage}}
-    <a href="{{nextLink}}" class="btn btn-secondary">Página Siguiente</a>
-    {{/if}}
-</div>
+                {{#if hasNextPage}}
+                <a href="{{nextLink}}" class="btn btn-secondary">Página Siguiente</a>
+                {{/if}}
+            </div>
+        </section>
+    </main>
+</body>
 
 
 <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>

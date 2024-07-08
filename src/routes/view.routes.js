@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import ProductManager from "../dao/db/productManagerDb.js";
 const productManager = new ProductManager();
-
 const router = Router();
 
 router.get("/", async (req, res) => {
@@ -31,13 +30,12 @@ router.get("/products", async (req, res) => {
                 productos.sort((a, b) => b.price - a.price);
             }
         }
-        
+
         const totalProductos = productos.length;
         const totalPages = Math.ceil(totalProductos / limit);
         const startIndex = (page - 1) * limit;
         const endIndex = page * limit;
         const paginatedProductos = productos.slice(startIndex, endIndex);
-
         const hasPrevPage = page > 1;
         const hasNextPage = page < totalPages;
 
@@ -58,8 +56,6 @@ router.get("/products", async (req, res) => {
         res.status(500).json({ error: "Error interno del servidor" });
     }
 });
-
-
 
 router.get("/products/:pid", async (req, res) => {
     const id = req.params.pid;
