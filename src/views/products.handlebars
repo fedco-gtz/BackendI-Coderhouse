@@ -1,37 +1,101 @@
-<body>
-    <main>
-        <section class="products">
-            <h1 class="title">PRODUCTOS</h1>
-            {{#each payload}}
-            <div class="container-products">
-                <div class="product-card">
-                    <h4 class="product-id">Código: {{code}}</h4>
-                    <h4 class="product-title">Nombre: {{this.title}}</h4>
-                    <p class="product-stock">Categoria: {{this.category}}</p>
-                    <p class="product-description">Descripción: {{this.description}}</p>
-                    <p class="product-price">Precio: {{this.price}}</p>
-                    <a href="/products/{{this._id}}" class="btn btn-primary">Ver Detalles</a>
-
-                    <form action="/add-to-cart/{{this._id}}" method="POST">
-                        <button type="submit" class="btn btn-success">Agregar al Carrito</button>
-                    </form>
-                </div>
+<main>
+    <section class="products">
+        <h1 class="title">PRODUCTOS</h1>
+        <div class="products-grid">
+            {{#each productos}}
+            <div class="product-card">
+                <h4 class="product-id">Código: {{this.code}}</h4>
+                <h1 class="product-title">{{this.title}}</h1>
+                <p class="product-price">Precio: ${{this.price}}</p>
+                <h2 class="product-stock">Stock disponible: {{this.stock}} | Categoría: {{this.category}}</h2>
+                <button class="btn-prima">AGREGAR AL CARRITO</button>
             </div>
             {{/each}}
-
-            <div>
-                {{#if hasPrevPage}}
-                <a href="{{prevLink}}" class="btn btn-secondary">Página Anterior</a>
-                {{/if}}
-
-                {{#if hasNextPage}}
-                <a href="{{nextLink}}" class="btn btn-secondary">Página Siguiente</a>
-                {{/if}}
-            </div>
-        </section>
-    </main>
-</body>
-
-
+        </div>
+        <br><br>
+        <div class="pagination-container">
+            {{#if hasNextPage}}
+            <a href="/products?page={{nextPage}}" class="pagination-link"> Siguiente </a>
+            {{/if}}
+            {{#if hasPrevPage}}
+            <a href="/products?page={{prevPage}}" class="pagination-link"> Anterior </a>
+            {{/if}}
+            
+            <p class="pagination-text">Página {{currentPage}} de {{totalPages}}</p>
+        </div>
+    </section>
+</main>
 <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
 <script src="js/main.js"></script>
+
+<style>
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .product-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+    }
+
+    .product-card:hover {
+        transform: scale(1.05);
+    }
+
+    .title {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .pagination-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .pagination-link {
+        text-decoration: none;
+        color: rgb(123, 182, 46);
+        padding: 10px 15px;
+        margin: 5px;
+        border: 1px solid rgb(123, 182, 46);
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+        font-weight: bold;
+    }
+
+    .pagination-link:hover {
+        background-color: rgb(123, 182, 46);
+        color: #ffffff;
+    }
+
+    .pagination-text {
+        font-size: 16px;
+        margin: 10px 0;
+        color: #333333;
+    }
+
+    .btn-prima {
+        background-color: rgb(255, 150, 50);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-weight: bold;
+    }
+
+    .btn-prima:hover {
+        background-color: rgb(190, 99, 13);
+    }
+</style>

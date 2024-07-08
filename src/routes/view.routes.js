@@ -13,47 +13,35 @@ router.get('/realtimeproducts', async (req, res) => {
 
 router.get("/products", async (req, res) => {
     try {
-        const limit = req.query.limit ? parseInt(req.query.limit) : 10;
-        const page = req.query.page ? parseInt(req.query.page) : 1;
-        const sort = req.query.sort;
-        const query = req.query.query;
-
-        let productos = await productManager.getProducts();
-
-        if (query) {
-            productos = productos.filter(producto => producto.category.includes(query));
-        }
-        if (sort) {
-            if (sort === 'asc') {
-                productos.sort((a, b) => a.price - b.price);
-            } else if (sort === 'desc') {
-                productos.sort((a, b) => b.price - a.price);
-            }
-        }
-
-        const totalProductos = productos.length;
-        const totalPages = Math.ceil(totalProductos / limit);
-        const startIndex = (page - 1) * limit;
-        const endIndex = page * limit;
-        const paginatedProductos = productos.slice(startIndex, endIndex);
-        const hasPrevPage = page > 1;
-        const hasNextPage = page < totalPages;
-
-        res.render('products', {
-            status: "success",
-            payload: paginatedProductos,
-            totalPages: totalPages,
-            prevPage: hasPrevPage ? page - 1 : null,
-            nextPage: hasNextPage ? page + 1 : null,
-            page: page,
-            hasPrevPage: hasPrevPage,
-            hasNextPage: hasNextPage,
-            prevLink: hasPrevPage ? `/products?limit=${limit}&page=${page - 1}` : null,
-            nextLink: hasNextPage ? `/products?limit=${limit}&page=${page + 1}` : null
+        const { page = 1, limit = 10, sort = 'asc', query } = req.query;
+        const productos = await productManager.getProducts({
+            page: parseInt(page),
+            limit: parseInt(limit),
+            sort: sort,
+            query: query
         });
+
+        const nuevoArray = productos.docs.map(producto => {
+            const { _id, ...rest } = producto.toObject();
+            return rest;
+        });
+
+        res.render("products", {
+            productos: nuevoArray,
+            hasPrevPage: productos.hasPrevPage,
+            hasNextPage: productos.hasNextPage,
+            prevPage: productos.prevPage,
+            nextPage: productos.nextPage,
+            currentPage: productos.page,
+            totalPages: productos.totalPages
+        });
+
     } catch (error) {
         console.error("Error al obtener productos", error);
-        res.status(500).json({ error: "Error interno del servidor" });
+        res.status(500).json({
+            status: 'error',
+            error: "Error interno del servidor"
+        });
     }
 });
 
