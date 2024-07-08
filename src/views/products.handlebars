@@ -1,11 +1,30 @@
-<body>
-    <main>
-        <section class="products">
-            <h1 class="title">PRODUCTOS DISPONIBLES</h1>
-            <div class="container-products" id="containerProducts"></div>
-        </section>
-    </main>
-</body>
+<h1>Lista de Productos</h1>
+
+{{#each payload}}
+<div class="product">
+    <h3>{{this.title}}</h3>
+    <p>Precio: {{this.price}}</p>
+    <p>Categoría: {{this.category}}</p>
+    <p>{{this.description}}</p>
+
+    <a href="/products/{{this._id}}" class="btn btn-primary">Ver Detalles</a>
+
+    <form action="/add-to-cart/{{this._id}}" method="POST">
+        <button type="submit" class="btn btn-success">Agregar al Carrito</button>
+    </form>
+</div>
+{{/each}}
+
+<div>
+    {{#if hasPrevPage}}
+    <a href="{{prevLink}}" class="btn btn-secondary">Página Anterior</a>
+    {{/if}}
+
+    {{#if hasNextPage}}
+    <a href="{{nextLink}}" class="btn btn-secondary">Página Siguiente</a>
+    {{/if}}
+</div>
+
 
 <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
 <script src="js/main.js"></script>

@@ -121,6 +121,12 @@ footer {
     gap: 20px;
 }
 
+#containerProductsCart {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
 .product-card {
     flex: 0 0 calc(33.333% - 20px);
     box-sizing: border-box;
