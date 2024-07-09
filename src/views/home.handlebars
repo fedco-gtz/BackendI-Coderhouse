@@ -9,7 +9,7 @@
         <div class="button-container">
             <a href="products" class="btn btn-primary">Productos</a>
             <a href="realtimeproducts" class="btn btn-secondary">Administrar Productos</a>
-            <button type="button" class="btn btn-tertiary">Carrito</button>
+            <a href="carts" class="btn btn-tertiary">Carrito</a>
         </div>
     </main>
 </body>
@@ -26,7 +26,7 @@
         padding: 10px 20px;
         font-size: 34px;
         font-weight: bold;
-        border: 3px solid white;  
+        border: 3px solid white;
         cursor: pointer;
         border-radius: 20px;
         text-transform: uppercase;
@@ -34,23 +34,27 @@
     }
 
     .btn-primary {
-        background-color: rgb(123, 182, 46);
+        background: -webkit-linear-gradient(90deg, #7bb62e, #44bb87);
+        background: linear-gradient(90deg, #7bb62e, #44bb87);
         color: white;
     }
 
     .btn-secondary {
-        background-color: rgb(12, 192, 223);
+        background: #44bb87;
         color: white;
     }
 
     .btn-tertiary {
-        background-color: rgb(255, 150, 50);
+        background: -webkit-linear-gradient(90deg, #44bb87, #0cc0df);
+        background: linear-gradient(90deg, #44bb87, #0cc0df);
         color: white;
     }
 
-    .btn-primary:hover, .btn-secondary:hover, .btn-tertiary:hover {
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    .btn-tertiary:hover {
         opacity: 0.8;
         color: black;
-        border: 3px solid black; 
+        border: 3px solid black;
     }
 </style>

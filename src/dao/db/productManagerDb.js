@@ -46,7 +46,6 @@ class ProductManager {
                 .sort(sortOptions)
                 .skip(skip)
                 .limit(limit);
-
             const totalProducts = await productModel.countDocuments(queryOptions);
             const totalPages = Math.ceil(totalProducts / limit);
             const hasPrevPage = page > 1;

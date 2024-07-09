@@ -7,10 +7,12 @@ router.get("/", async (req, res) => {
     res.render('home');
 });
 
+// Ruta para hacer funcional realTimeProducts.handelbars
 router.get('/realtimeproducts', async (req, res) => {
     res.render('realTimeProducts');
 })
 
+// Rutas para hacer funcional products.handelbars
 router.get("/products", async (req, res) => {
     try {
         const { page = 1, limit = 10, sort = 'asc', query } = req.query;
@@ -23,7 +25,7 @@ router.get("/products", async (req, res) => {
 
         const nuevoArray = productos.docs.map(producto => {
             const { _id, ...rest } = producto.toObject();
-            return rest;
+            return { _id, ...rest };
         });
 
         res.render("products", {
@@ -59,5 +61,29 @@ router.get("/products/:pid", async (req, res) => {
     }
 });
 
+// Rutas para hacer funcional cart.handelbars
+router.get("/carts/:cid", async (req, res) => {
+    const cartId = req.params.cid;
+ 
+    try {
+       const carrito = await cartManager.getCarritoById(cartId);
+ 
+       if (!carrito) {
+          console.log("No existe ese carrito con el id");
+          return res.status(404).json({ error: "Carrito no encontrado" });
+       }
+ 
+       const productosEnCarrito = carrito.products.map(item => ({
+          product: item.product.toObject(),
+          quantity: item.quantity
+       }));
+ 
+ 
+       res.render("carts", { productos: productosEnCarrito });
+    } catch (error) {
+       console.error("Error al obtener el carrito", error);
+       res.status(500).json({ error: "Error interno del servidor" });
+    }
+ });
 
 export default router;
