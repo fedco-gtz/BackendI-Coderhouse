@@ -1,7 +1,7 @@
 {
   "name": "backend-1",
   "version": "1.0.0",
-  "description": "PreEntrega1-Gutierrez",
+  "description": "ProyectoFinal-Gutierrez",
   "main": "app.js",
   "type": "module",
   "scripts": {
@@ -17,7 +17,6 @@
     "express-handlebars": "^7.1.2",
     "express-routemap": "^1.6.0",
     "mongoose": "^8.4.5",
-    "mongoose-paginate-v2": "^1.8.2",
     "socket.io": "^4.7.5"
   }
 }

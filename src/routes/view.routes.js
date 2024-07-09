@@ -3,6 +3,7 @@ import ProductManager from "../dao/db/productManagerDb.js";
 const productManager = new ProductManager();
 const router = Router();
 
+// Ruta para hacer funcional home.handelbars
 router.get("/", async (req, res) => {
     res.render('home');
 });
