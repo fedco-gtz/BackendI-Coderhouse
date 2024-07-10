@@ -14,6 +14,17 @@ router.post('/api/carts', async (req, res) => {
     }
 });
 
+// Método GET para mostrar el carrito de compras
+router.get('/api/carts', async (req, res) => {
+    try {
+        const carts = await cartManager.getAllCarts();
+        res.status(200).json(carts);
+    } catch (error) {
+        console.error('Error al obtener los carritos', error);
+        res.status(500).json({ error: 'Error interno del servidor' });
+    }
+});
+
 // Método GET para visualizar los productos del carrito por ID
 router.get('/api/carts/:cid', async (req, res) => {
     const cartId = req.params.cid;

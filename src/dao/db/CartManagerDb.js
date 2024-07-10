@@ -25,6 +25,16 @@ class CartManager {
         }
     }
 
+    async getAllCarts() {
+        try {
+            const carts = await cartModel.find();
+            return carts;
+        } catch (error) {
+            console.error('Error al obtener todos los carritos:', error);
+            throw error;
+        }
+    }
+
     async addProductToCart(cartId, productId, quantity = 1) {
         try {
             const cart = await this.getCartById(cartId);

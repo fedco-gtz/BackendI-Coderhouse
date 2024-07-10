@@ -52,13 +52,14 @@ router.get("/products/:pid", async (req, res) => {
     const id = req.params.pid;
     try {
         const producto = await productManager.getProductById(id);
-        if (!producto) {
+        if (producto) {
+            return res.render("productDetails", producto );
+        } else {
             return res.status(404).json({ error: "Producto no encontrado" });
         }
-        res.render("productDetails", { producto });
     } catch (error) {
         console.error("Error al obtener producto", error);
-        res.status(500).json({ error: "Error interno del servidor" });
+        return res.status(500).json({ error: "Error interno del servidor" });
     }
 });
 
@@ -80,7 +81,7 @@ router.get("/carts/:cid", async (req, res) => {
        }));
  
  
-       res.render("carts", { productos: productosEnCarrito });
+       res.render("carts/668ab448793e8e90c4993b67", { productos: productosEnCarrito });
     } catch (error) {
        console.error("Error al obtener el carrito", error);
        res.status(500).json({ error: "Error interno del servidor" });
