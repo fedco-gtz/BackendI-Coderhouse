@@ -34,6 +34,9 @@ router.get("/api/products", async (req, res) => {
             return rest;
         });
 
+        const prevLink = productos.hasPrevPage ? `/api/products?page=${productos.prevPage}&limit=${limit}` : null;
+        const nextLink = productos.hasNextPage ? `/api/products?page=${productos.nextPage}&limit=${limit}` : null;
+
         res.json({
             status: "success",
             payload: nuevoArray,
@@ -43,6 +46,8 @@ router.get("/api/products", async (req, res) => {
             hasPrevPage: productos.hasPrevPage,
             hasNextPage: productos.hasNextPage,
             page: productos.page,
+            prevLink: prevLink,
+            nextLink: nextLink
         });
 
     } catch (error) {
