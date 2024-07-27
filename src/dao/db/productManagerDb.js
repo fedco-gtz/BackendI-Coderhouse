@@ -104,6 +104,15 @@ class ProductManager {
             throw error;
         }
     }
+    async getProductsTotal() {
+        try {
+            const productos = await productModel.find();
+            return productos;
+        } catch (error) {
+            console.log("Error al obtener los productos", error);
+            throw error;
+        }
+    }
 }
 
 export default ProductManager;
